@@ -4,6 +4,14 @@ import java.util.ArrayList;
 
 public class StoreFront {
 
+	/**
+	 * Allows the game user to purchase a product which then updates the current
+	 * inventory and the user's shopping cart
+	 * 
+	 * @param inventory
+	 * @param product
+	 */
+
 	public void purchaseProduct(ArrayList<SalableProduct> inventory, SalableProduct product) {
 
 		ShoppingCart shoppingCart = new ShoppingCart();
@@ -21,7 +29,7 @@ public class StoreFront {
 					int newQuantity = inventory.get(item).getQuantity();
 
 					if (newQuantity <= 0) {
-						inventory.get(item).setAvailable(false);
+						inventory.get(item).setAvailable();
 
 					}
 
@@ -33,6 +41,14 @@ public class StoreFront {
 		}
 
 	}
+
+	/**
+	 * Allows the game user to return products which then updates the current
+	 * inventory
+	 * 
+	 * @param inventory
+	 * @param product
+	 */
 
 	public void returnProduct(ArrayList<SalableProduct> inventory, SalableProduct product) {
 		InventoryManager stock = new InventoryManager(inventory);
@@ -48,7 +64,7 @@ public class StoreFront {
 				stock.getInventory().get(item).setQuantity(currentQuantity + 1);
 
 				if (stock.getInventory().get(item).getQuantity() > 0) {
-					stock.getInventory().get(item).setAvailable(true);
+					stock.getInventory().get(item).setAvailable();
 
 				}
 
@@ -60,6 +76,12 @@ public class StoreFront {
 		}
 
 	}
+
+	/**
+	 * Allows game users to view all available products for purchase
+	 * 
+	 * @param inventory
+	 */
 
 	public void viewProducts(ArrayList<SalableProduct> inventory) {
 

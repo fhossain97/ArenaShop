@@ -11,18 +11,39 @@ public class User {
 
 	}
 
+	/**
+	 * Retrieves the name of a user
+	 * 
+	 * @return name
+	 */
+
 	public String getName() {
 		return name;
 	}
+
+	/**
+	 * Sets the name of a user
+	 */
 
 	public void setName(String name) {
 		this.name = name;
 	}
 
+	/**
+	 * Retrieves the accessLevel of a user (admin or non-admin)
+	 * 
+	 * @return accessLevel
+	 */
+
 	public String getAccessLevel() {
 		return accessLevel;
 	}
 
+	/**
+	 * Sets the accessLevel of a user to admin or non-admin (game user)
+	 * 
+	 * @param accessLevel
+	 */
 	public void setAccessLevel(String accessLevel) {
 		this.accessLevel = accessLevel;
 	}
