@@ -6,7 +6,7 @@ public class ShoppingCart {
 	private ArrayList<SalableProduct> cart;
 
 	public ShoppingCart() {
-		// TODO - populate with products from a JSON list
+		
 		this.cart = new ArrayList<>();
 	}
 
@@ -64,7 +64,6 @@ public class ShoppingCart {
 	 */
 
 	public void clearCart() {
-
 		cart.clear();
 	}
 

@@ -6,6 +6,12 @@ public class InventoryManager {
 
 	private ArrayList<SalableProduct> inventory;
 
+	public InventoryManager(ArrayList<SalableProduct> inventory) {
+		// TODO - populate with products from a JSON list
+
+		this.inventory = new ArrayList<>();
+	}
+
 	/**
 	 * Retrieves the current inventory of products (both in-stock and out-of-stock
 	 * products)
@@ -25,10 +31,7 @@ public class InventoryManager {
 	 */
 
 	public void setInventory(ArrayList<SalableProduct> inventory) {
-		this.inventory = inventory;
-	}
 
-	public InventoryManager(ArrayList<SalableProduct> inventory) {
 		this.inventory = inventory;
 	}
 
