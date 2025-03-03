@@ -3,6 +3,7 @@ package arenaShop;
 public class SalableProduct {
 
 	private String name;
+	private int id;
 	private String description;
 	private double price;
 	private int quantity;
@@ -103,17 +104,37 @@ public class SalableProduct {
 	 */
 
 	public void setAvailable() {
-
 		this.available = getQuantity() > 0;
 
 	}
 
-	public SalableProduct(String name, String description, double price, int quantity, boolean available) {
+	/**
+	 * Retrieves product id
+	 * 
+	 * @return id
+	 */
+
+	public int getId() {
+		return id;
+	}
+
+	/**
+	 * Sets product id
+	 * 
+	 * @param id
+	 */
+	public void setId(int id) {
+		// TODO - may remove this method as it is not needed
+		this.id = id;
+	}
+
+	public SalableProduct(String name, String description, double price, int quantity, boolean available, int id) {
 		this.name = name;
 		this.description = description;
 		this.price = price;
 		this.quantity = quantity;
 		this.available = available;
+		this.id = id;
 	}
 
 	/**
@@ -123,18 +144,33 @@ public class SalableProduct {
 	@Override
 	public String toString() {
 
-		return "Product information: {name: " + name + ", description: " + description + " price: $"
-				+ String.format("%, .2f", price) + "}";
+		return "{id: " + id + ", name: " + name + ", description: " + description + ", price: $"
+				+ String.format("%,.2f", price) + "}";
 
 	}
 
 }
 
-class AddOn extends SalableProduct {
+class Weapon extends SalableProduct {
 
-	public AddOn(String name, String description, double price, int quantity, boolean available) {
-		super(name, description, price, quantity, available);
-		// TODO - TO BE COMPLETED WITH MORE CONTEXT LATER
+	public Weapon(String name, String description, double price, int quantity, boolean available, int id) {
+		super(name, description, price, quantity, available, id);
+	}
+
+}
+
+class Armor extends SalableProduct {
+
+	public Armor(String name, String description, double price, int quantity, boolean available, int id) {
+		super(name, description, price, quantity, available, id);
+	}
+
+}
+
+class Health extends SalableProduct {
+
+	public Health(String name, String description, double price, int quantity, boolean available, int id) {
+		super(name, description, price, quantity, available, id);
 	}
 
 }

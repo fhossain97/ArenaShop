@@ -1,0 +1,98 @@
+[
+	{
+		"id": 1,
+		"name": "Gladiator's Helm",
+		"description": "A sturdy helmet for protecting warriors in the arena",
+		"price": 150.87,
+		"quantity": 10,
+		"available": true
+	},
+	{
+		"id": 2,
+		"name": "Champion's Sword",
+		"description": "A finely crafted blade designed for arena combat",
+		"price": 300.05,
+		"quantity": 5,
+		"available": true
+	},
+	{
+		"id": 3,
+		"name": "Arena Potion",
+		"description": "A potion that restores health after intense battles",
+		"price": 50.04,
+		"quantity": 20,
+		"available": true
+	},
+	{
+		"id": 4,
+		"name": "Warrior's Shield",
+		"description": "A reinforced shield to block enemy attacks",
+		"price": 200.99,
+		"quantity": 8,
+		"available": true
+	},
+	{
+		"id": 5,
+		"name": "Rare Gemstone",
+		"description": "A precious gemstone sought after by collectors",
+		"price": 500.34,
+		"quantity": 1,
+		"available": true
+	},
+	{
+		"id": 6,
+		"name": "Ancient Scroll",
+		"description": "A mystical scroll containing forgotten knowledge",
+		"price": 400.89,
+		"quantity": 1,
+		"available": true
+	},
+	{
+		"id": 7,
+		"name": "Iron Chestplate",
+		"description": "A heavy chestplate for excellent protection",
+		"price": 250.66,
+		"quantity": 6,
+		"available": true
+	},
+	{
+		"id": 8,
+		"name": "Leather Armor",
+		"description": "A lightweight armor for agility and protection",
+		"price": 180.32,
+		"quantity": 10,
+		"available": true
+	},
+	{
+		"id": 9,
+		"name": "Battle Axe",
+		"description": "A powerful axe that delivers crushing blows",
+		"price": 350.96,
+		"quantity": 4,
+		"available": true
+	},
+	{
+		"id": 10,
+		"name": "Longbow",
+		"description": "A bow with great range for skilled archers",
+		"price": 280.55,
+		"quantity": 7,
+		"available": true
+	},
+	{
+		"id": 11,
+		"name": "Healing Elixir",
+		"description": "A magical elixir that restores a significant amount of health",
+		"price": 75.83,
+		"quantity": 15,
+		"available": true
+	},
+	{
+		"id": 12,
+		"name": "Stamina Tonic",
+		"description": "A tonic that rejuvenates stamina and energy",
+		"price": 60.73,
+		"quantity": 12,
+		"available": true
+	}
+]
