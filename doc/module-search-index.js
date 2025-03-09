@@ -1,1 +1,1 @@
-moduleSearchIndex = [{"l":"arenaShop"}];updateSearchResults();
+moduleSearchIndex = [];updateSearchResults();

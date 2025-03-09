@@ -1,6 +1,6 @@
-package arenaShop;
+package arenaShop.product;
 
-public class SalableProduct {
+public class SalableProduct implements Comparable<SalableProduct> {
 
 	private String name;
 	private int id;
@@ -8,6 +8,18 @@ public class SalableProduct {
 	private double price;
 	private int quantity;
 	private boolean available;
+	private String purchasedAt;
+	private String category;
+
+	/**
+	 * Retrieves the name of store the product was purchased from
+	 * 
+	 * @return purchasedAt
+	 */
+
+	public String getPurchasedAt() {
+		return purchasedAt;
+	}
 
 	/**
 	 * Retrieves the name of a product
@@ -27,6 +39,15 @@ public class SalableProduct {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	/**
+	 * Retrieves the category the product belongs to
+	 * 
+	 * @return category
+	 */
+	public String getCategory() {
+		return category;
 	}
 
 	/**
@@ -118,23 +139,16 @@ public class SalableProduct {
 		return id;
 	}
 
-	/**
-	 * Sets product id
-	 * 
-	 * @param id
-	 */
-	public void setId(int id) {
-		// TODO - may remove this method as it is not needed
-		this.id = id;
-	}
-
-	public SalableProduct(String name, String description, double price, int quantity, boolean available, int id) {
+	public SalableProduct(String name, String description, double price, int quantity, boolean available, int id,
+			String purchasedAt, String category) {
 		this.name = name;
 		this.description = description;
 		this.price = price;
 		this.quantity = quantity;
 		this.available = available;
 		this.id = id;
+		this.purchasedAt = purchasedAt;
+		this.category = category;
 	}
 
 	/**
@@ -145,32 +159,21 @@ public class SalableProduct {
 	public String toString() {
 
 		return "{id: " + id + ", name: " + name + ", description: " + description + ", price: $"
-				+ String.format("%,.2f", price) + "}";
+				+ String.format("%,.2f", price) + ", category: " + category + "}";
 
 	}
 
-}
+	/**
+	 * Overriding the compareTo() method in the interface so as to specify how to
+	 * order objects
+	 */
 
-class Weapon extends SalableProduct {
-
-	public Weapon(String name, String description, double price, int quantity, boolean available, int id) {
-		super(name, description, price, quantity, available, id);
+	@Override
+	public int compareTo(SalableProduct sp) {
+		return this.name.compareToIgnoreCase(sp.name);
 	}
 
-}
-
-class Armor extends SalableProduct {
-
-	public Armor(String name, String description, double price, int quantity, boolean available, int id) {
-		super(name, description, price, quantity, available, id);
-	}
-
-}
-
-class Health extends SalableProduct {
-
-	public Health(String name, String description, double price, int quantity, boolean available, int id) {
-		super(name, description, price, quantity, available, id);
-	}
+	// TODO - may need to implement setter and getter methods for all fields for the
+	// admin user
 
 }

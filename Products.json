@@ -4,8 +4,10 @@
 		"name": "Gladiator's Helm",
 		"description": "A sturdy helmet for protecting warriors in the arena",
 		"price": 150.87,
-		"quantity": 10,
-		"available": true
+		"quantity": 2,
+		"available": true,
+		"purchasedAt": "BunnyArena",
+		"category": "armor"
 	},
 	{
 		"id": 2,
@@ -13,7 +15,9 @@
 		"description": "A finely crafted blade designed for arena combat",
 		"price": 300.05,
 		"quantity": 5,
-		"available": true
+		"available": true,
+		"purchasedAt": "BunnyArena",
+		"category": "weapon"
 	},
 	{
 		"id": 3,
@@ -21,7 +25,9 @@
 		"description": "A potion that restores health after intense battles",
 		"price": 50.04,
 		"quantity": 20,
-		"available": true
+		"available": true,
+		"purchasedAt": "BunnyArena",
+		"category": "health"
 	},
 	{
 		"id": 4,
@@ -29,23 +35,29 @@
 		"description": "A reinforced shield to block enemy attacks",
 		"price": 200.99,
 		"quantity": 8,
-		"available": true
+		"available": true,
+		"purchasedAt": "BunnyArena",
+		"category": "armor"
 	},
 	{
 		"id": 5,
-		"name": "Rare Gemstone",
-		"description": "A precious gemstone sought after by collectors",
-		"price": 500.34,
-		"quantity": 1,
-		"available": true
+		"name": "Battle Axe",
+		"description": "A heavy axe designed for powerful strikes in battle",
+		"price": 350.75,
+		"quantity": 4,
+		"available": true,
+		"purchasedAt": "BunnyArena",
+		"category": "weapon"
 	},
 	{
 		"id": 6,
-		"name": "Ancient Scroll",
-		"description": "A mystical scroll containing forgotten knowledge",
-		"price": 400.89,
-		"quantity": 1,
-		"available": true
+		"name": "Healing Salve",
+		"description": "A medicinal salve to treat wounds and restore vitality",
+		"price": 75.20,
+		"quantity": 15,
+		"available": true,
+		"purchasedAt": "BunnyArena",
+		"category": "health"
 	},
 	{
 		"id": 7,
@@ -53,46 +65,28 @@
 		"description": "A heavy chestplate for excellent protection",
 		"price": 250.66,
 		"quantity": 6,
-		"available": true
+		"available": true,
+		"purchasedAt": "BunnyArena",
+		"category": "armor"
 	},
 	{
 		"id": 8,
-		"name": "Leather Armor",
-		"description": "A lightweight armor for agility and protection",
-		"price": 180.32,
-		"quantity": 10,
-		"available": true
+		"name": "Longbow",
+		"description": "A ranged weapon designed for skilled archers",
+		"price": 275.99,
+		"quantity": 3,
+		"available": true,
+		"purchasedAt": "BunnyArena",
+		"category": "weapon"
 	},
 	{
 		"id": 9,
-		"name": "Battle Axe",
-		"description": "A powerful axe that delivers crushing blows",
-		"price": 350.96,
-		"quantity": 4,
-		"available": true
-	},
-	{
-		"id": 10,
-		"name": "Longbow",
-		"description": "A bow with great range for skilled archers",
-		"price": 280.55,
+		"name": "Elixir of Vitality",
+		"description": "A rare elixir that greatly enhances endurance",
+		"price": 120.50,
 		"quantity": 7,
-		"available": true
-	},
-	{
-		"id": 11,
-		"name": "Healing Elixir",
-		"description": "A magical elixir that restores a significant amount of health",
-		"price": 75.83,
-		"quantity": 15,
-		"available": true
-	},
-	{
-		"id": 12,
-		"name": "Stamina Tonic",
-		"description": "A tonic that rejuvenates stamina and energy",
-		"price": 60.73,
-		"quantity": 12,
-		"available": true
+		"available": true,
+		"purchasedAt": "BunnyArena",
+		"category": "health"
 	}
 ]

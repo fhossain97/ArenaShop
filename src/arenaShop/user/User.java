@@ -1,4 +1,4 @@
-package arenaShop;
+package arenaShop.user;
 
 public class User {
 
@@ -42,7 +42,7 @@ public class User {
 	/**
 	 * Sets the accessLevel of a user to admin or non-admin (game user)
 	 * 
-	 * @param accessLevel
+	 * @param accessLevel Access level provide to a user
 	 */
 	public void setAccessLevel(String accessLevel) {
 		this.accessLevel = accessLevel;
