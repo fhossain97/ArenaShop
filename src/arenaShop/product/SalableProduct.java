@@ -155,6 +155,8 @@ public class SalableProduct implements Comparable<SalableProduct> {
 	 * Overrides the toString() method to output product information
 	 */
 
+//TODO - may want to show product quantity for user - will wait for part 4 before implementing
+
 	@Override
 	public String toString() {
 

@@ -100,7 +100,7 @@ public class StoreFront {
 		System.out.println("3: Return a product");
 		System.out.println("4: View shopping cart");
 		System.out.println("5: Clear shopping cart");
-		System.out.println("5: Exit the Bunny Arena");
+		System.out.println("6: Exit the Bunny Arena");
 
 	}
 

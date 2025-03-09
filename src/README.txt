@@ -13,5 +13,5 @@ Code design: https://www.loom.com/share/a64d8affa53840909cfef77cfd49bfe7?sid=fd4
 
 
 Part 3:
-UML diagrams: 
-Code design: 
+UML diagrams: https://www.loom.com/share/ecfd8e74742a42c89f07961490235504?sid=c74c6088-6a39-4afc-870f-fde95cb035bb
+Code design: https://www.loom.com/share/f9d5d0b137224f0d81b0611d85cb1452?sid=0090187a-68f7-489d-8e4c-d0d04ed1b4e1
