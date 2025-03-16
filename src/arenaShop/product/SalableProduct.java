@@ -85,7 +85,7 @@ public class SalableProduct implements Comparable<SalableProduct> {
 	 */
 
 	public void setPrice(double price) {
-		// TODO - may not need
+
 		this.price = price;
 	}
 
@@ -155,13 +155,11 @@ public class SalableProduct implements Comparable<SalableProduct> {
 	 * Overrides the toString() method to output product information
 	 */
 
-//TODO - may want to show product quantity for user - will wait for part 4 before implementing
-
 	@Override
 	public String toString() {
 
 		return "{id: " + id + ", name: " + name + ", description: " + description + ", price: $"
-				+ String.format("%,.2f", price) + ", category: " + category + "}";
+				+ String.format("%,.2f", price) + ", category: " + category + ", remainingStock: " + quantity + "}";
 
 	}
 

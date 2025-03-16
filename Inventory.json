@@ -1,0 +1,92 @@
+[
+	{
+		"quantity": 2,
+		"price": 150.87,
+		"name": "Gladiator's Helm",
+		"available": true,
+		"purchasedAt": "BunnyArena",
+		"description": "A sturdy helmet for protecting warriors in the arena",
+		"id": 1,
+		"category": "armor"
+	},
+	{
+		"quantity": 5,
+		"price": 300.05,
+		"name": "Champion's Sword",
+		"available": true,
+		"purchasedAt": "BunnyArena",
+		"description": "A finely crafted blade designed for arena combat",
+		"id": 2,
+		"category": "weapon"
+	},
+	{
+		"quantity": 20,
+		"price": 50.04,
+		"name": "Arena Potion",
+		"available": true,
+		"purchasedAt": "BunnyArena",
+		"description": "A potion that restores health after intense battles",
+		"id": 3,
+		"category": "health"
+	},
+	{
+		"quantity": 8,
+		"price": 200.99,
+		"name": "Warrior's Shield",
+		"available": true,
+		"purchasedAt": "BunnyArena",
+		"description": "A reinforced shield to block enemy attacks",
+		"id": 4,
+		"category": "armor"
+	},
+	{
+		"quantity": 4,
+		"price": 350.75,
+		"name": "Battle Axe",
+		"available": true,
+		"purchasedAt": "BunnyArena",
+		"description": "A heavy axe designed for powerful strikes in battle",
+		"id": 5,
+		"category": "weapon"
+	},
+	{
+		"quantity": 15,
+		"price": 75.2,
+		"name": "Healing Salve",
+		"available": true,
+		"purchasedAt": "BunnyArena",
+		"description": "A medicinal salve to treat wounds and restore vitality",
+		"id": 6,
+		"category": "health"
+	},
+	{
+		"quantity": 6,
+		"price": 250.66,
+		"name": "Iron Chestplate",
+		"available": true,
+		"purchasedAt": "BunnyArena",
+		"description": "A heavy chestplate for excellent protection",
+		"id": 7,
+		"category": "armor"
+	},
+	{
+		"quantity": 3,
+		"price": 275.99,
+		"name": "Longbow",
+		"available": true,
+		"purchasedAt": "BunnyArena",
+		"description": "A ranged weapon designed for skilled archers",
+		"id": 8,
+		"category": "weapon"
+	},
+	{
+		"quantity": 7,
+		"price": 120.5,
+		"name": "Elixir of Vitality",
+		"available": true,
+		"purchasedAt": "BunnyArena",
+		"description": "A rare elixir that greatly enhances endurance",
+		"id": 9,
+		"category": "health"
+	}
+]

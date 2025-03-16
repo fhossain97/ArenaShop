@@ -1,0 +1,9 @@
+1,Gladiator's Helm,A sturdy helmet for protecting warriors in the arena,150.87,2,true,BunnyArena,armor
+2,Champion's Sword,A finely crafted blade designed for arena combat,300.05,5,true,BunnyArena,weapon
+3,Arena Potion,A potion that restores health after intense battles,50.04,20,true,BunnyArena,health
+4,Warrior's Shield,A reinforced shield to block enemy attacks,200.99,8,true,BunnyArena,armor
+5,Battle Axe,A heavy axe designed for powerful strikes in battle,350.75,4,true,BunnyArena,weapon
+6,Healing Salve,A medicinal salve to treat wounds and restore vitality,75.20,15,true,BunnyArena,health
+7,Iron Chestplate,A heavy chestplate for excellent protection,250.66,6,true,BunnyArena,armor
+8,Longbow,A ranged weapon designed for skilled archers,275.99,3,true,BunnyArena,weapon
+9,Elixir of Vitality,A rare elixir that greatly enhances endurance,120.50,7,true,BunnyArena,health
