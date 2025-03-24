@@ -2,9 +2,12 @@ package arenaShop;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Scanner;
 import org.json.simple.parser.ParseException;
 import arenaShop.product.SalableProduct;
+import arenaShop.product.SalableProductFactoryInterface;
+import arenaShop.product.SalableProductFactory;
 
 public class StoreFront {
 
@@ -22,8 +25,8 @@ public class StoreFront {
 	// TODO - needs validation logic to check if product being returned exceeds the
 	// original inventory quantity of that specific product
 
-	public static void cancelProduct(InventoryManager inventory, SalableProduct product, String command,
-			ShoppingCart shoppingCart) {
+	public static void cancelProduct(InventoryManager<SalableProduct> inventory, SalableProduct product, String command,
+			ShoppingCart<SalableProduct> shoppingCart) {
 
 		ArrayList<SalableProduct> products = inventory.getAvailableInventory();
 
@@ -67,7 +70,8 @@ public class StoreFront {
 	 * @param shoppingCart List of products in the game user's shopping cart
 	 */
 
-	public static void purchaseProduct(InventoryManager inventory, SalableProduct product, ShoppingCart shoppingCart) {
+	public static void purchaseProduct(InventoryManager<SalableProduct> inventory, SalableProduct product,
+			ShoppingCart<SalableProduct> shoppingCart) {
 
 		ArrayList<SalableProduct> products = inventory.getAllInventory();
 
@@ -113,7 +117,7 @@ public class StoreFront {
 	 * @return selectedProduct
 	 */
 
-	public static SalableProduct retrieveProductInformation(Scanner scnr, InventoryManager inventory) {
+	public static SalableProduct retrieveProductInformation(Scanner scnr, InventoryManager<SalableProduct> inventory) {
 
 		ArrayList<SalableProduct> products = inventory.getAllInventory();
 
@@ -134,37 +138,109 @@ public class StoreFront {
 
 	}
 
-	// TODO public void sortByPrice() { }
+	/**
+	 * Sorts the available products in ascending or descending order
+	 * 
+	 * @param scnr       Scanner
+	 * @param comparator Comparing products with one another
+	 * @return comparator
+	 */
+
+	public static Comparator<SalableProduct> sortByAscOrDesc(Scanner scnr, Comparator<SalableProduct> comparator) {
+		System.out.println("\nChoose the order type of the products.");
+		System.out.println("1: Ascending");
+		System.out.println("2: Descending");
+
+		int userSelection = scnr.nextInt();
+
+		if (userSelection == 2) {
+			comparator = comparator.reversed();
+		}
+
+		return comparator;
+	}
+
+	/**
+	 * 
+	 * @param inventory List of products
+	 * @param scnr      Scanner
+	 * @return products
+	 */
+
+	public static ArrayList<SalableProduct> sortByNameOrPrice(InventoryManager<SalableProduct> inventory,
+			Scanner scnr) {
+		System.out.println("\nSort the products by their name or price. Please select an option.");
+		System.out.println("1: Name");
+		System.out.println("2: Price");
+
+		ArrayList<SalableProduct> products = inventory.getAllInventory();
+		ArrayList<SalableProduct> availableProds = new ArrayList<>();
+
+		for (SalableProduct prod : products) {
+			if (prod.isAvailable()) {
+				availableProds.add(prod);
+			}
+		}
+
+		int userSelection = scnr.nextInt();
+
+		Comparator<SalableProduct> comparator = null;
+
+		if (userSelection == 1) {
+			comparator = Comparator.comparing(SalableProduct::getName);
+		} else if (userSelection == 2) {
+			comparator = Comparator.comparing(SalableProduct::getPrice);
+
+		} else {
+			System.out.println("Invalid number entered. Please try again.");
+			return products;
+		}
+
+		comparator = sortByAscOrDesc(scnr, comparator);
+
+		availableProds.sort(comparator);
+
+		for (SalableProduct prod : availableProds) {
+			System.out.println(prod);
+		}
+
+		return availableProds;
+	}
+
+	public static ArrayList<SalableProduct> sortedProducts(InventoryManager<SalableProduct> inventory, Scanner scnr) {
+		inventory.getAvailableInventory();
+		ArrayList<SalableProduct> products = sortByNameOrPrice(inventory, scnr);
+		return products;
+	}
 
 	public static void main(String[] args) throws ParseException, IOException {
 
 		Scanner scnr = new Scanner(System.in);
-		InventoryManager inventory = new InventoryManager();
-		ShoppingCart shoppingCart = new ShoppingCart();
+		SalableProductFactoryInterface<SalableProduct> productFactory = new SalableProductFactory();
+		InventoryManager<SalableProduct> inventory = new InventoryManager<SalableProduct>(productFactory);
+		ShoppingCart<SalableProduct> shoppingCart = new ShoppingCart<SalableProduct>();
 
 		boolean isEmpty = shoppingCart.validateShoppingCart();
+
+		boolean isMakingSelection = true;
 
 		System.out.println(
 				"Welcome to the Bunny Arena Store! We are your one stop shop for all armor, health, and weapons. Enter a number for the corresponding option below to get started. \n");
 
-		boolean isMakingSelection = true;
-
+		displayMenuOptions();
 		while (isMakingSelection) {
-			displayMenuOptions();
 
 			String selectedOption = scnr.nextLine();
 
 			switch (selectedOption) {
 			case "1":
-				inventory.getAvailableInventory();
-				System.out.println();
+				sortedProducts(inventory, scnr);
 				break;
 
 			case "2":
 
 				System.out.println("Which product would you like to purchase? Please enter a product id. \n");
-				inventory.getAvailableInventory();
-
+				sortedProducts(inventory, scnr);
 				SalableProduct newProduct = retrieveProductInformation(scnr, inventory);
 				purchaseProduct(inventory, newProduct, shoppingCart);
 
@@ -228,13 +304,16 @@ public class StoreFront {
 			}
 
 			System.out.println();
-
 			System.out.println("Would you like to select another option? Type Y to continue or N to exit.");
+			scnr.nextLine();
+
 			String newOption = scnr.nextLine().toLowerCase();
 
 			if (newOption.equals("n")) {
 				System.out.println("Thank you for coming. We hope to see you again soon! Goodbye.");
 				isMakingSelection = false;
+			} else if (newOption.equals("y")) {
+				displayMenuOptions();
 			}
 
 		}

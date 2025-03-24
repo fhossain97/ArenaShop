@@ -7,19 +7,19 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-
 import arenaShop.product.SalableProduct;
+import arenaShop.product.SalableProductFactoryInterface;
 
-public class InventoryManager {
+public class InventoryManager<T extends SalableProduct> {
 
-	private ArrayList<SalableProduct> inventory;
+	private ArrayList<T> inventory;
+	private final SalableProductFactoryInterface<T> productFactory;
 
 	/**
 	 * Checks if a file can be read (permissions)
@@ -72,8 +72,7 @@ public class InventoryManager {
 	 */
 
 	public void generateInventory(String fileName) throws FileNotFoundException, IOException, ParseException {
-		this.inventory = new ArrayList<>();
-
+		this.inventory = new ArrayList<T>();
 		try {
 
 			JSONParser parser = new JSONParser();
@@ -91,11 +90,10 @@ public class InventoryManager {
 				String purchasedAt = (String) jsonObj.get("purchasedAt");
 				String category = (String) jsonObj.get("category");
 
-				SalableProduct product = new SalableProduct(name, description, price, quantity, available, id,
-						purchasedAt, category);
+				T product = productFactory.createProduct(name, description, price, quantity, available, id, purchasedAt,
+						category);
 				this.inventory.add(product);
 
-				Collections.sort(this.inventory);
 			}
 
 		} catch (FileNotFoundException e) {
@@ -182,7 +180,8 @@ public class InventoryManager {
 	 * @throws IOException
 	 */
 
-	public InventoryManager() {
+	public InventoryManager(SalableProductFactoryInterface<T> productFactory) {
+		this.productFactory = productFactory;
 		this.inventory = new ArrayList<>();
 		String fileName = "Inventory.json";
 
@@ -212,10 +211,10 @@ public class InventoryManager {
 	 * 
 	 * @return inventory List of all products
 	 * 
-	 
+	 * 
 	 */
 
-	public ArrayList<SalableProduct> getAllInventory() {
+	public ArrayList<T> getAllInventory() {
 		return inventory;
 	}
 
@@ -224,10 +223,10 @@ public class InventoryManager {
 	 * a product and its current availability
 	 * 
 	 * @param inventory List of all products
-	 * @return inventory 
+	 * @return inventory
 	 */
 
-	public void setInventory(ArrayList<SalableProduct> inventory) {
+	public void setInventory(ArrayList<T> inventory) {
 		this.inventory = inventory;
 	}
 
@@ -237,13 +236,13 @@ public class InventoryManager {
 	 * @return availableInventory
 	 */
 
-	public ArrayList<SalableProduct> getAvailableInventory() {
+	public ArrayList<T> getAvailableInventory() {
 
 		System.out.println("-****- All available products -****-");
 
-		ArrayList<SalableProduct> availableInventory = new ArrayList<>();
+		ArrayList<T> availableInventory = new ArrayList<>();
 
-		ArrayList<SalableProduct> inventory = getAllInventory();
+		ArrayList<T> inventory = getAllInventory();
 
 		for (int item = 0; item < inventory.size(); item++) {
 
@@ -266,7 +265,7 @@ public class InventoryManager {
 	 * @param item     Order of a product within the inventory
 	 */
 
-	public void updateInventory(ArrayList<SalableProduct> products, String command, int item) {
+	public void updateInventory(ArrayList<T> products, String command, int item) {
 
 		int currentQuantity = products.get(item).getQuantity();
 

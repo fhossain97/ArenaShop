@@ -1,6 +1,7 @@
 package arenaShop.product;
 
-public class SalableProduct implements Comparable<SalableProduct> {
+public class SalableProduct  {
+	
 
 	private String name;
 	private int id;
@@ -163,17 +164,6 @@ public class SalableProduct implements Comparable<SalableProduct> {
 
 	}
 
-	/**
-	 * Overriding the compareTo() method in the interface so as to specify how to
-	 * order objects
-	 */
 
-	@Override
-	public int compareTo(SalableProduct sp) {
-		return this.name.compareToIgnoreCase(sp.name);
-	}
-
-	// TODO - may need to implement setter and getter methods for all fields for the
-	// admin user
 
 }

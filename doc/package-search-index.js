@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"arenaShop"}];updateSearchResults();
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"arenaShop"},{"l":"arenaShop.product"},{"l":"arenaShop.user"}];updateSearchResults();

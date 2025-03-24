@@ -4,11 +4,11 @@ import java.util.ArrayList;
 
 import arenaShop.product.SalableProduct;
 
-public class ShoppingCart {
-	private ArrayList<SalableProduct> cart;
+public class ShoppingCart <T extends SalableProduct> {
+	private ArrayList<T> cart;
 
 	public ShoppingCart() {
-		this.cart = new ArrayList<>();
+		this.cart = new ArrayList<T>();
 	}
 
 	/**
@@ -17,7 +17,7 @@ public class ShoppingCart {
 	 * @return cart
 	 */
 
-	public ArrayList<SalableProduct> viewCart() {
+	public ArrayList<T> viewCart() {
 		return cart;
 	}
 
@@ -27,7 +27,7 @@ public class ShoppingCart {
 	 * @param product Product that game user is returning or removing from cart
 	 */
 
-	public void setCart(SalableProduct product) {
+	public void setCart(T product) {
 		this.cart.add(product);
 	}
 
@@ -37,7 +37,7 @@ public class ShoppingCart {
 	 * @param product Product that game user is returning or removing from cart
 	 */
 
-	public void addProductToCart(SalableProduct product) {
+	public void addProductToCart(T product) {
 		setCart(product);
 	}
 
@@ -46,7 +46,7 @@ public class ShoppingCart {
 	 * 
 	 * @param product Product that game user is returning or removing from cart
 	 */
-	public void removeProductFromCart(SalableProduct product) {
+	public void removeProductFromCart(T product) {
 
 		for (int item = 0; item < cart.size(); item++) {
 			if (cart.get(item).getId() == product.getId()) {
@@ -80,7 +80,7 @@ public class ShoppingCart {
 	 * inventory
 	 */
 
-	public void clearCart(ArrayList<SalableProduct> products, InventoryManager inventory) {
+	public void clearCart(ArrayList<T> products, InventoryManager<T> inventory) {
 
 		for (int prod = 0; prod < products.size(); prod++) {
 			inventory.updateInventory(products, "increase", prod);
