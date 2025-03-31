@@ -1,0 +1,152 @@
+[
+	{
+		"quantity": 10,
+		"price": 85.25,
+		"name": "Phoenix Down",
+		"available": true,
+		"purchasedAt": "BunnyArena",
+		"description": "A mystical feather that revives fallen warriors",
+		"id": 10,
+		"category": "health"
+	},
+	{
+		"quantity": 12,
+		"price": 65.99,
+		"name": "Mana Tonic",
+		"available": true,
+		"purchasedAt": "BunnyArena",
+		"description": "Restores magical energy for spellcasters",
+		"id": 11,
+		"category": "health"
+	},
+	{
+		"quantity": 8,
+		"price": 110.5,
+		"name": "Stamina Draught",
+		"available": true,
+		"purchasedAt": "BunnyArena",
+		"description": "Boosts endurance for prolonged battles",
+		"id": 12,
+		"category": "health"
+	},
+	{
+		"quantity": 15,
+		"price": 45.75,
+		"name": "Antidote Vial",
+		"available": true,
+		"purchasedAt": "BunnyArena",
+		"description": "Neutralizes common poisons and venoms",
+		"id": 13,
+		"category": "health"
+	},
+	{
+		"quantity": 5,
+		"price": 180.0,
+		"name": "Divine Elixir",
+		"available": true,
+		"purchasedAt": "BunnyArena",
+		"description": "Fully restores health and removes all ailments",
+		"id": 14,
+		"category": "health"
+	},
+	{
+		"quantity": 7,
+		"price": 420.5,
+		"name": "Dragon Slayer",
+		"available": true,
+		"purchasedAt": "BunnyArena",
+		"description": "A legendary sword imbued with fire essence",
+		"id": 15,
+		"category": "weapon"
+	},
+	{
+		"quantity": 4,
+		"price": 375.25,
+		"name": "Vorpal Dagger",
+		"available": true,
+		"purchasedAt": "BunnyArena",
+		"description": "An enchanted blade that seeks vital points",
+		"id": 16,
+		"category": "weapon"
+	},
+	{
+		"quantity": 6,
+		"price": 290.99,
+		"name": "Thunder Hammer",
+		"available": true,
+		"purchasedAt": "BunnyArena",
+		"description": "A massive hammer that crackles with electricity",
+		"id": 17,
+		"category": "weapon"
+	},
+	{
+		"quantity": 3,
+		"price": 510.75,
+		"name": "Repeating Crossbow",
+		"available": true,
+		"purchasedAt": "BunnyArena",
+		"description": "Rapid-fire ranged weapon with magazine feed",
+		"id": 18,
+		"category": "weapon"
+	},
+	{
+		"quantity": 2,
+		"price": 680.0,
+		"name": "Soul Reaper Scythe",
+		"available": true,
+		"purchasedAt": "BunnyArena",
+		"description": "A cursed weapon that drains life from victims",
+		"id": 19,
+		"category": "weapon"
+	},
+	{
+		"quantity": 9,
+		"price": 225.5,
+		"name": "Titan Gauntlets",
+		"available": true,
+		"purchasedAt": "BunnyArena",
+		"description": "Reinforced gloves that enhance grip and punching power",
+		"id": 20,
+		"category": "armor"
+	},
+	{
+		"quantity": 5,
+		"price": 335.25,
+		"name": "Dragon Scale Mail",
+		"available": true,
+		"purchasedAt": "BunnyArena",
+		"description": "Lightweight armor crafted from dragon hide",
+		"id": 21,
+		"category": "armor"
+	},
+	{
+		"quantity": 7,
+		"price": 275.99,
+		"name": "Sentinel's Greaves",
+		"available": true,
+		"purchasedAt": "BunnyArena",
+		"description": "Sturdy leg armor that improves mobility",
+		"id": 22,
+		"category": "armor"
+	},
+	{
+		"quantity": 4,
+		"price": 410.0,
+		"name": "Aegis of the Gods",
+		"available": true,
+		"purchasedAt": "BunnyArena",
+		"description": "An enchanted shield that deflects magical attacks",
+		"id": 23,
+		"category": "armor"
+	},
+	{
+		"quantity": 6,
+		"price": 195.75,
+		"name": "Shadow Cloak",
+		"available": true,
+		"purchasedAt": "BunnyArena",
+		"description": "A cloak that blends the wearer into darkness",
+		"id": 24,
+		"category": "armor"
+	}
+]

@@ -109,6 +109,31 @@ public class InventoryManager<T extends SalableProduct> {
 
 	}
 
+	public void writeToInventoryJSONFile(List<JSONObject> products) {
+
+		try (FileWriter file = new FileWriter("Inventory.json")) {
+			file.write("[");
+
+			for (int i = 0; i < products.size(); i++) {
+				JSONObject prod = products.get(i);
+				file.write(prod.toJSONString());
+
+				if (i < products.size() - 1) {
+					file.write(",");
+				}
+			}
+
+			file.write("]");
+
+			file.flush();
+			System.out.println("Inventory.json updated successfully.");
+		} catch (IOException e) {
+			e.printStackTrace();
+			System.out.printf("Unable to write to %s. \n", "Inventory.json");
+		}
+
+	}
+
 	/**
 	 * Generates a JSON file with seed data of the inventory in the event the
 	 * Inventory.json file does not exist.
@@ -146,26 +171,7 @@ public class InventoryManager<T extends SalableProduct> {
 
 				}
 
-				try (FileWriter file = new FileWriter("Inventory.json")) {
-					file.write("[");
-
-					for (int i = 0; i < products.size(); i++) {
-						JSONObject prod = products.get(i);
-						file.write(prod.toJSONString());
-
-						if (i < products.size() - 1) {
-							file.write(",");
-						}
-					}
-
-					file.write("]");
-
-					file.flush();
-					System.out.println("Inventory.json created successfully.");
-				} catch (IOException e) {
-					e.printStackTrace();
-					System.out.printf("Unable to read %s. \n", fileName);
-				}
+				writeToInventoryJSONFile(products);
 
 			}
 		} else {

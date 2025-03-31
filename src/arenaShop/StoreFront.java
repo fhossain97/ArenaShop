@@ -22,8 +22,7 @@ public class StoreFront {
 	 * @param shoppingCart List of products in the game user's shopping cart
 	 */
 
-	// TODO - needs validation logic to check if product being returned exceeds the
-	// original inventory quantity of that specific product
+
 
 	public static void cancelProduct(InventoryManager<SalableProduct> inventory, SalableProduct product, String command,
 			ShoppingCart<SalableProduct> shoppingCart) {
