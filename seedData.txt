@@ -6,4 +6,18 @@
 6,Healing Salve,A medicinal salve to treat wounds and restore vitality,75.20,15,true,BunnyArena,health
 7,Iron Chestplate,A heavy chestplate for excellent protection,250.66,6,true,BunnyArena,armor
 8,Longbow,A ranged weapon designed for skilled archers,275.99,3,true,BunnyArena,weapon
-9,Elixir of Vitality,A rare elixir that greatly enhances endurance,120.50,7,true,BunnyArena,health
+9,Elixir of Vitality,A rare elixir that greatly enhances endurance,120.50,7,true,BunnyArena,health10,Phoenix Down,A mystical feather that revives fallen warriors,85.25,10,true,BunnyArena,health
+11,Mana Tonic,Restores magical energy for spellcasters,65.99,12,true,BunnyArena,health
+12,Stamina Draught,Boosts endurance for prolonged battles,110.50,8,true,BunnyArena,health
+13,Antidote Vial,Neutralizes common poisons and venoms,45.75,15,true,BunnyArena,health
+14,Divine Elixir,Fully restores health and removes all ailments,180.00,5,true,BunnyArena,health
+15,Dragon Slayer,A legendary sword imbued with fire essence,420.50,7,true,BunnyArena,weapon
+16,Vorpal Dagger,An enchanted blade that seeks vital points,375.25,4,true,BunnyArena,weapon
+17,Thunder Hammer,A massive hammer that crackles with electricity,290.99,6,true,BunnyArena,weapon
+18,Repeating Crossbow,Rapid-fire ranged weapon with magazine feed,510.75,3,true,BunnyArena,weapon
+19,Soul Reaper Scythe,A cursed weapon that drains life from victims,680.00,2,true,BunnyArena,weapon
+20,Titan Gauntlets,Reinforced gloves that enhance grip and punching power,225.50,9,true,BunnyArena,armor
+21,Dragon Scale Mail,Lightweight armor crafted from dragon hide,335.25,5,true,BunnyArena,armor
+22,Sentinel's Greaves,Sturdy leg armor that improves mobility,275.99,7,true,BunnyArena,armor
+23,Aegis of the Gods,An enchanted shield that deflects magical attacks,410.00,4,true,BunnyArena,armor
+24,Shadow Cloak,A cloak that blends the wearer into darkness,195.75,6,true,BunnyArena,armor

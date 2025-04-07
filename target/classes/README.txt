@@ -34,3 +34,4 @@ Part 7:
 Code design: https://www.loom.com/share/f5e0342874e14583b30826c2dc7e0c3e?sid=cae10a18-5a48-4e05-82da-bc52f5487127
 Functionality: https://www.loom.com/share/b283bd95ecab4d6b95e4198220de0416?sid=dc848ce6-6176-4bb1-94f9-7657712aacd6
 
+Final code walkthrough: https://www.loom.com/share/f22ae0419ab744beaa7b568159920800?sid=f9f0850c-c95a-4133-9515-ecd16edf2866
