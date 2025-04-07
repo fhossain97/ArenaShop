@@ -29,3 +29,8 @@ Part 6:
 UML diagrams: https://www.loom.com/share/e47ea6f3486b41eab1136e0f000ae91b?sid=f0629c72-d20f-48a9-9507-1f58884a4aff
 Code design: https://www.loom.com/share/38705e092f45449cb50093a107ef096a?sid=22dcd847-04ed-445a-a0bc-f0cfd0d77de0
 Functionality: https://www.loom.com/share/717b4104a2e5429d8bd619fe64d9ddcc?sid=71a76a82-e6d6-4f8c-be01-2a0d8f81a045
+
+Part 7:
+Code design: https://www.loom.com/share/f5e0342874e14583b30826c2dc7e0c3e?sid=cae10a18-5a48-4e05-82da-bc52f5487127
+Functionality: https://www.loom.com/share/b283bd95ecab4d6b95e4198220de0416?sid=dc848ce6-6176-4bb1-94f9-7657712aacd6
+

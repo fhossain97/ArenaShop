@@ -16,20 +16,24 @@ import org.json.simple.parser.ParseException;
 import arenaShop.product.SalableProduct;
 import arenaShop.product.SalableProductFactoryInterface;
 
+/**
+ * Manages the inventory of products
+ * @param <T> Extends the SalableProduct class
+ */
+
 public class InventoryManager<T extends SalableProduct> {
 
 	private ArrayList<T> inventory;
 	private final SalableProductFactoryInterface<T> productFactory;
 
 	/**
-	 * Checks if a file can be read (permissions)
+	 * Confirms if a file can be read (permissions)
 	 * 
 	 * @param fileName Name of the file
 	 * @return fileReadable
 	 */
 
 	public boolean fileIsReadable(String fileName) {
-
 		File file = new File(fileName);
 		return file.canRead();
 
@@ -57,7 +61,6 @@ public class InventoryManager<T extends SalableProduct> {
 
 	public boolean fileExists(String fileName) {
 		File file = new File(fileName);
-
 		return file.exists();
 
 	}
@@ -109,6 +112,12 @@ public class InventoryManager<T extends SalableProduct> {
 
 	}
 
+	/**
+	 * Reads the updated JSON file and updates the inventory
+	 * 
+	 * @param products List of products in the inventory
+	 */
+
 	public void writeToInventoryJSONFile(List<JSONObject> products) {
 
 		try (FileWriter file = new FileWriter("Inventory.json")) {
@@ -124,7 +133,6 @@ public class InventoryManager<T extends SalableProduct> {
 			}
 
 			file.write("]");
-
 			file.flush();
 			System.out.println("Inventory.json updated successfully.");
 		} catch (IOException e) {
@@ -194,15 +202,12 @@ public class InventoryManager<T extends SalableProduct> {
 		try {
 			if (fileIsReadable(fileName) && fileExists(fileName)) {
 				generateInventory(fileName);
-			}
-
-			else {
+			} else {
 
 				generateJSONFile(fileName);
 				if (fileExists(fileName)) {
 					generateInventory(fileName);
 				}
-
 			}
 
 		} catch (Exception e) {
@@ -217,7 +222,6 @@ public class InventoryManager<T extends SalableProduct> {
 	 * 
 	 * @return inventory List of all products
 	 * 
-	 * 
 	 */
 
 	public ArrayList<T> getAllInventory() {
@@ -229,7 +233,7 @@ public class InventoryManager<T extends SalableProduct> {
 	 * a product and its current availability
 	 * 
 	 * @param inventory List of all products
-	 * @return inventory
+
 	 */
 
 	public void setInventory(ArrayList<T> inventory) {
@@ -247,7 +251,6 @@ public class InventoryManager<T extends SalableProduct> {
 		System.out.println("-****- All available products -****-");
 
 		ArrayList<T> availableInventory = new ArrayList<>();
-
 		ArrayList<T> inventory = getAllInventory();
 
 		for (int item = 0; item < inventory.size(); item++) {
@@ -257,7 +260,6 @@ public class InventoryManager<T extends SalableProduct> {
 				System.out.println(inventory.get(item).toString());
 			}
 		}
-
 		return availableInventory;
 	}
 
@@ -268,7 +270,7 @@ public class InventoryManager<T extends SalableProduct> {
 	 * @param products All products in the inventory
 	 * @param command  Internal command that executes the correct logic in this
 	 *                 method
-	 * @param item     Order of a product within the inventory
+	 * @param item     Product within the inventory
 	 */
 
 	public void updateInventory(ArrayList<T> products, String command, int item) {
@@ -276,19 +278,17 @@ public class InventoryManager<T extends SalableProduct> {
 		int currentQuantity = products.get(item).getQuantity();
 
 		if (command.equals("increase")) {
+			products.get(item).setQuantity(currentQuantity + 1);
 
-			products.get(item).setQuantity(currentQuantity - 1);
-
-			if (products.get(item).getQuantity() <= 0) {
+			if (products.get(item).getQuantity() > 0) {
 				products.get(item).setAvailable();
 
 			}
 
-		} else {
+		} else if (command.equals("decrease")) {
+			products.get(item).setQuantity(currentQuantity - 1);
 
-			products.get(item).setQuantity(currentQuantity + 1);
-
-			if (products.get(item).getQuantity() > 0) {
+			if (products.get(item).getQuantity() <= 0) {
 				products.get(item).setAvailable();
 
 			}

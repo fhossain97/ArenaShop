@@ -9,6 +9,10 @@ import arenaShop.product.SalableProduct;
 import arenaShop.product.SalableProductFactoryInterface;
 import arenaShop.product.SalableProductFactory;
 
+/**
+ * Main class that handles the game play
+ */
+
 public class StoreFront {
 
 	/**
@@ -17,14 +21,10 @@ public class StoreFront {
 	 * 
 	 * @param inventory    List of products
 	 * @param product      Product that game user is returning or removing from cart
-	 * @param command      Internal command that executes the correct logic in this
-	 *                     method
 	 * @param shoppingCart List of products in the game user's shopping cart
 	 */
 
-
-
-	public static void cancelProduct(InventoryManager<SalableProduct> inventory, SalableProduct product, String command,
+	public static void returnProduct(InventoryManager<SalableProduct> inventory, SalableProduct product,
 			ShoppingCart<SalableProduct> shoppingCart) {
 
 		ArrayList<SalableProduct> products = inventory.getAvailableInventory();
@@ -33,28 +33,14 @@ public class StoreFront {
 
 			if (products.get(item).getId() == product.getId() && product.getPurchasedAt().equals("BunnyArena")) {
 
-				if (command.equals("return")) {
-					System.out.printf("Processing your return for: %s \n", product.getName());
+				System.out.printf("Processing your return for: %s \n", product.getName());
 
-					inventory.updateInventory(products, "decrease", item);
+				inventory.updateInventory(products, "increase", item);
+				shoppingCart.removeProductFromCart(product);
 
-					System.out.println("Return has been processed.");
-					return;
-				} else {
-					System.out.printf("Removing %s from your shopping cart . . . \n", product.getName());
+				System.out.println("Return has been processed.");
+				return;
 
-					inventory.updateInventory(products, "decrease", item);
-
-					shoppingCart.removeProductFromCart(product);
-
-					System.out.printf("%s has been removed from your shopping cart. \n", product.getName());
-
-				}
-
-			} else {
-				System.out.printf(
-						"Product was not purchased from the Bunny Arena store. Please return product at: %s \n",
-						product.getPurchasedAt());
 			}
 		}
 
@@ -138,7 +124,7 @@ public class StoreFront {
 	}
 
 	/**
-	 * Sorts the available products in ascending or descending order
+	 * Sorts the inventory in ascending or descending order
 	 * 
 	 * @param scnr       Scanner
 	 * @param comparator Comparing products with one another
@@ -160,6 +146,7 @@ public class StoreFront {
 	}
 
 	/**
+	 * Sorts the inventory by ascending or descending along with by name or price
 	 * 
 	 * @param inventory List of products
 	 * @param scnr      Scanner
@@ -206,6 +193,14 @@ public class StoreFront {
 		return availableProds;
 	}
 
+	/**
+	 * Outputs the sorted inventory
+	 * 
+	 * @param inventory List of products
+	 * @param scnr      Scanner
+	 * @return products
+	 */
+
 	public static ArrayList<SalableProduct> sortedProducts(InventoryManager<SalableProduct> inventory, Scanner scnr) {
 		inventory.getAvailableInventory();
 		ArrayList<SalableProduct> products = sortByNameOrPrice(inventory, scnr);
@@ -223,6 +218,8 @@ public class StoreFront {
 
 		boolean isMakingSelection = true;
 
+		ArrayList<SalableProduct> sortedProds = new ArrayList<>();
+
 		System.out.println(
 				"Welcome to the Bunny Arena Store! We are your one stop shop for all armor, health, and weapons. Enter a number for the corresponding option below to get started. \n");
 
@@ -233,13 +230,17 @@ public class StoreFront {
 
 			switch (selectedOption) {
 			case "1":
-				sortedProducts(inventory, scnr);
+				sortedProds = sortedProducts(inventory, scnr);
 				break;
 
 			case "2":
 
 				System.out.println("Which product would you like to purchase? Please enter a product id. \n");
-				sortedProducts(inventory, scnr);
+				if (sortedProds.size() > 0) {
+					System.out.println(sortedProds);
+				} else {
+					inventory.getAvailableInventory();
+				}
 				SalableProduct newProduct = retrieveProductInformation(scnr, inventory);
 				purchaseProduct(inventory, newProduct, shoppingCart);
 
@@ -248,8 +249,9 @@ public class StoreFront {
 			case "3":
 				System.out.println(
 						"Thank you for trying our products. Let's go ahead and process your return. Please enter your product id - a list has been provided for your reference.");
+				System.out.println(shoppingCart.viewCart());
 				SalableProduct previousProduct = retrieveProductInformation(scnr, inventory);
-				cancelProduct(inventory, previousProduct, "increase", shoppingCart);
+				returnProduct(inventory, previousProduct, shoppingCart);
 
 				break;
 
@@ -258,7 +260,6 @@ public class StoreFront {
 				if (isEmpty) {
 					System.out.println(
 							"No products have been added to your shopping cart! Please add products to your cart.");
-
 					break;
 				}
 				System.out.println("-****- Shopping Cart -****-");
@@ -304,7 +305,6 @@ public class StoreFront {
 
 			System.out.println();
 			System.out.println("Would you like to select another option? Type Y to continue or N to exit.");
-			scnr.nextLine();
 
 			String newOption = scnr.nextLine().toLowerCase();
 

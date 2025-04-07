@@ -4,7 +4,12 @@ import java.util.ArrayList;
 
 import arenaShop.product.SalableProduct;
 
-public class ShoppingCart <T extends SalableProduct> {
+/**
+ * Modifies the shopping cart of a game user
+ * @param <T> Extends the SalableProduct class
+ */
+
+public class ShoppingCart<T extends SalableProduct> {
 	private ArrayList<T> cart;
 
 	public ShoppingCart() {
@@ -51,6 +56,7 @@ public class ShoppingCart <T extends SalableProduct> {
 		for (int item = 0; item < cart.size(); item++) {
 			if (cart.get(item).getId() == product.getId()) {
 				cart.remove(item);
+				break;
 			}
 		}
 
@@ -63,15 +69,7 @@ public class ShoppingCart <T extends SalableProduct> {
 	 */
 
 	public boolean validateShoppingCart() {
-		boolean hasItems = false;
-
-		if (viewCart().size() <= 0) {
-			return hasItems;
-
-		}
-
-		hasItems = true;
-		return hasItems;
+		return viewCart().size() > 0;
 
 	}
 

@@ -1,16 +1,20 @@
 package arenaShop.product;
 
+/**
+ * Creates a salable product for the inventory
+ */
+
 public class SalableProduct  {
 	
 
-	private String name;
-	private int id;
-	private String description;
-	private double price;
-	private int quantity;
-	private boolean available;
-	private String purchasedAt;
-	private String category;
+	public String name;
+	public int id;
+	public String description;
+	public double price;
+	public int quantity;
+	public boolean available;
+	public String purchasedAt;
+	public String category;
 
 	/**
 	 * Retrieves the name of store the product was purchased from

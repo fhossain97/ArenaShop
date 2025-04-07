@@ -7,19 +7,21 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
+/**
+ * Client side for the admin user
+ */
+
 public class AdministrationApp {
-	
-	// TODO - need to retest and update logic
 
 	private Socket clientSocket;
 	private PrintWriter out;
 	private BufferedReader in;
-	
+
 	/**
 	 * Starts the thread execution
 	 * 
 	 * @param ip   Local IP address
-	 * @param port Port to connect the server and client on
+	 * @param port Port that the client and server run on
 	 * @throws UnknownHostException
 	 * @throws IOException
 	 */
@@ -29,21 +31,32 @@ public class AdministrationApp {
 		out = new PrintWriter(clientSocket.getOutputStream(), true);
 		in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 	}
-	
+
 	/**
 	 * Sends a message to the server
-	 * @param msg Outputs the user's selected choice
-	 * @return in.readLine()
+	 * 
+	 * @param msg Message sent to the server
+	 * @return response
 	 * @throws IOException
 	 */
 
 	public String sendMessage(String msg) throws IOException {
 		out.println(msg);
-		return in.readLine();
+		StringBuilder response = new StringBuilder();
+		String line;
+
+		while ((line = in.readLine()) != null) {
+			if (line.equals("End")) {
+				break;
+			}
+			response.append(line).append("\n");
+		}
+		return response.toString().trim();
 	}
-	
+
 	/**
-	 * Closes all readers, writer, and sockets
+	 * Closes the reader, writer, and client socket
+	 * 
 	 * @throws IOException
 	 */
 
@@ -52,94 +65,35 @@ public class AdministrationApp {
 		out.close();
 		clientSocket.close();
 	}
-	
-	/**
-	 * Display options for user
-	 */
-
-	public static void displayMenuOptions() {
-		System.out.println("R: View all inventory products");
-		System.out.println("U: Update inventory");
-	}
-	
-	/**
-	 * Further display options
-	 */
-
-	public static void displayUpdateOptions() {
-		System.out.println("1: Add a new product");
-		System.out.println("2: Update an existing product");
-		System.out.println("3: Remove a product");
-		System.out.println("4: Add multiple products");
-	}
 
 	public static void main(String[] args) throws UnknownHostException, IOException {
 		AdministrationApp adminApp = new AdministrationApp();
 		adminApp.start("127.0.0.1", 8080);
 
 		BufferedReader userInputReader = new BufferedReader(new InputStreamReader(System.in));
-		String userCommand;
+		String response = "";
 
 		while (true) {
-			displayMenuOptions();
-			userCommand = userInputReader.readLine().toUpperCase();
+			System.out.println("R: View all inventory products");
+			System.out.println("U: Update inventory");
+			String userCommand = userInputReader.readLine().toUpperCase();
 
 			if (userCommand.equals("U")) {
-				displayUpdateOptions();
-				String updateCommand = userInputReader.readLine();
-
-				String response = adminApp.sendMessage(updateCommand);
-				System.out.println("Server Response: " + response);
-
-				switch (updateCommand) {
-				case "1":
-					System.out.println("Enter product details (e.g., name, price): ");
-					String productDetails = userInputReader.readLine();
-					response = adminApp.sendMessage("ADD_PRODUCT:" + productDetails);
-					System.out.println("Server Response: " + response);
-					break;
-
-				case "2":
-					System.out.println("Enter product ID to update: ");
-					String productId = userInputReader.readLine();
-					System.out.println("Enter new product details: ");
-					String updatedDetails = userInputReader.readLine();
-					response = adminApp.sendMessage("UPDATE_PRODUCT:" + productId + ":" + updatedDetails);
-					System.out.println("Server Response: " + response);
-					break;
-
-				case "3":
-					System.out.println("Enter product ID to remove: ");
-					String removeProductId = userInputReader.readLine();
-					response = adminApp.sendMessage("REMOVE_PRODUCT:" + removeProductId);
-					System.out.println("Server Response: " + response);
-					break;
-
-				case "4":
-					System.out.println("Enter product details for multiple products (comma separated): ");
-					String multipleProductsDetails = userInputReader.readLine();
-					response = adminApp.sendMessage("ADD_MULTIPLE_PRODUCTS:" + multipleProductsDetails);
-					System.out.println("Server Response: " + response);
-					break;
-
-				default:
-					System.out.println("Invalid selection. Please select a valid option.");
-					break;
-				}
+				response = adminApp.sendMessage("U");
 			} else if (userCommand.equals("R")) {
-				String response = adminApp.sendMessage("R");
-				System.out.println("Server Response: " + response);
+				response = adminApp.sendMessage("R");
 			} else {
 				System.out.println("Invalid command. Please enter 'R' to view or 'U' to update.");
 			}
+			System.out.println("Server Response: " + response);
 
 			System.out.println("Would you like to continue? (Y/N)");
-			String continueCommand = userInputReader.readLine().toUpperCase();
-			if (continueCommand.equals("N")) {
+
+			if (userCommand.equals("N")) {
 				break;
 			}
 		}
-	
+
 		adminApp.cleanup();
 	}
 }
